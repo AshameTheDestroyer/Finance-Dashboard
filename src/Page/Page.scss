@@ -1,0 +1,11 @@
+@use "../index.scss";
+
+body {
+    background-color: index.$background-darker-colour;
+}
+
+button {
+    background-color: transparent;
+
+    border: 0.2rem solid index.$main-colour;
+}

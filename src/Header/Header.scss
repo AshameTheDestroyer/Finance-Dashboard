@@ -1,0 +1,137 @@
+@use "../index.scss";
+
+$header-padding: 2rem;
+$nav-padding: 2rem;
+
+header {
+    position: fixed;
+    top: 0;
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    place-content: center;
+    place-items: center;
+    gap: $header-padding;
+
+    width: calc(100vw - $header-padding * 2);
+
+    padding: $header-padding;
+
+    #logo::first-letter {
+        padding: 0.5rem 1rem;
+        margin-right: 0.25ch;
+
+        background-color: index.$main-colour;
+
+        border-radius: 100%;
+    }
+
+    nav button {
+        border: none;
+
+        &#nav-toggling-button {
+            width: $nav-padding;
+            aspect-ratio: 1;
+
+            display: none;
+        }
+    }
+
+    aside {
+        display: flex;
+        flex-direction: row;
+        place-content: center;
+        place-items: center;
+        place-self: center end;
+        gap: 1rem;
+
+        .intensified-button {
+            background-color: index.$main-colour;
+        }
+    }
+}
+
+@media (width <=720px) {
+
+    header {
+        $padding-left: $nav-padding * 4;
+
+        width: calc(100vw - $header-padding - $padding-left);
+
+        padding-left: $padding-left;
+
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            max-width: calc(100vw - $nav-padding * 2);
+            height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            padding: $nav-padding;
+            padding-top: 8rem;
+
+            background-color: index.$background-colour;
+
+            transition: 1500ms max-width;
+
+            #nav-toggling-button {
+                display: block !important;
+
+                position: absolute;
+                inset: $nav-padding $nav-padding auto auto;
+
+                background-image: url("../Icons/delete.svg");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 100%;
+            }
+
+            button:not(#nav-toggling-button) {
+                transition: 500ms opacity;
+            }
+        }
+    }
+
+    header.nav-closed {
+
+        nav {
+            max-width: $nav-padding;
+
+            transition: 500ms max-width;
+
+            #nav-toggling-button {
+                transform: rotate(-90deg);
+
+                background-image: url("../Icons/arrow_thick.svg");
+            }
+
+            button:not(#nav-toggling-button) {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+@media (width <=400px) {
+
+    header {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0;
+
+        #logo {
+            place-self: center start;
+        }
+
+        nav {
+            width: 100%;
+
+            transition: 500ms max-width;
+        }
+    }
+}
