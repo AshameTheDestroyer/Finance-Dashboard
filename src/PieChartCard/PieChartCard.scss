@@ -1,0 +1,120 @@
+@use "../index.scss";
+@use "../Page/Page.scss";
+
+.pie-chart-card {
+
+    .pie-chart-displayer {
+        position: relative;
+
+        display: flex;
+        place-content: center;
+        place-items: center;
+
+        svg {
+            --width: 75px;
+            --stroke-width: 15px;
+
+            width: var(--width);
+            aspect-ratio: 1;
+
+            padding: calc(var(--stroke-width) / 2);
+
+            overflow: visible;
+
+            circle {
+                --stroke-offset-max: 470;
+                --percentage: 50;
+                --colour: #00D647;
+
+                fill: none;
+                stroke: var(--colour);
+                stroke-width: var(--stroke-width);
+
+                stroke-dasharray: var(--stroke-offset-max);
+                stroke-dashoffset:
+                    calc(var(--stroke-offset-max) - var(--stroke-offset-max) * var(--percentage) / 100 * 1.01);
+
+                transform-origin: 50%;
+            }
+
+        }
+
+        .focal-percentage-displayer {
+            position: absolute;
+            inset: 0;
+
+            display: flex;
+            flex-direction: column;
+            place-content: center;
+            place-items: center;
+
+            p:first-child {
+                font-weight: bold;
+                font-size: x-large;
+            }
+
+            p:last-child {
+                font-size: smaller;
+            }
+        }
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        margin-top: 2rem;
+
+        font-size: small;
+
+        .percentage-displayer {
+            --colour: #00D647;
+
+            position: relative;
+
+            display: flex;
+            flex-direction: row;
+            place-content: space-between;
+            place-items: space-between;
+            gap: 2rem;
+
+            padding-left: 3rem;
+
+            &::before {
+                content: "";
+
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                width: 2rem;
+                aspect-ratio: 1;
+
+                background-color: var(--colour);
+
+                border-radius: 100%;
+            }
+        }
+    }
+}
+
+@media (width > Page.$first-screen-width) or (orientaion: landscape) {
+
+    .pie-chart-card {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 2rem;
+
+        main {
+            display: flex;
+            flex-direction: column;
+            place-content: stretch center;
+            place-items: stretch center;
+
+            .percentage-displayer {
+                flex-wrap: wrap;
+            }
+        }
+    }
+}

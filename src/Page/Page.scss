@@ -1,5 +1,8 @@
 @use "../index.scss";
 
+$first-screen-width: 800px;
+$second-screen-width: 500px;
+
 body {
     background-color: index.$background-darker-colour;
 }
@@ -8,4 +11,41 @@ button {
     background-color: transparent;
 
     border: 0.2rem solid index.$main-colour;
+}
+
+#landing-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+
+    min-height: 100vh;
+}
+
+button {
+    border-color: index.$background-colour;
+
+    transition: background-color 500ms, color 500ms;
+
+    &.emphasized-button {
+        background-color: index.$main-colour;
+
+        border-color: index.$main-colour;
+
+        &:is(:hover, :focus-within) {
+            color: index.$main-colour;
+            background-color: index.$background-darker-colour;
+        }
+    }
+
+    &:not(.emphasized-button):is(:hover, :focus-within) {
+        background-color: index.$background-colour;
+    }
+}
+
+.button-displayer {
+    display: flex;
+    flex-direction: row;
+    place-content: center;
+    place-items: center;
+    gap: 1rem;
 }

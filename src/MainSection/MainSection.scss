@@ -1,0 +1,175 @@
+@use "../index.scss";
+@use "../Page/Page.scss";
+
+#main-section {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    gap: 4rem;
+
+    padding: 2rem;
+
+    #welcome-section {
+        display: flex;
+        flex-direction: column;
+        place-content: start center;
+        place-items: start center;
+        gap: inherit;
+
+        #news-displayer {
+            $padding: 1rem;
+
+            position: relative;
+
+            background-color: index.$background-colour;
+
+            padding: $padding;
+            padding-left: calc(4ch + $padding * 2 + 1rem);
+
+            border-radius: 3rem;
+
+            overflow: hidden;
+
+            &::before {
+                content: "News";
+
+                text-transform: uppercase;
+
+                position: absolute;
+                inset: 0 auto 0 0;
+
+                display: flex;
+                place-items: center;
+
+                padding: $padding;
+
+                background-color: index.$main-colour;
+
+                border-radius: inherit;
+            }
+        }
+
+        h1 {
+            font-size: xx-large;
+            line-height: 5rem;
+
+            margin-top: -1rem;
+        }
+
+        .emphasized-button {
+            position: relative;
+
+            padding-right: calc(2ch + 2rem);
+
+            &::after {
+                content: "";
+
+                position: absolute;
+                inset: 0.5rem 0.5ch 0.5rem auto;
+                transform: rotate(-90deg);
+
+                aspect-ratio: 1;
+
+                padding: 1rem;
+
+                background-image: url("../Icons/arrow_thin.svg");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 100%;
+
+                transition: filter 500ms;
+            }
+
+            &:is(:hover, :focus-within)::after {
+                filter: index.$main-colour-filter;
+            }
+        }
+    }
+
+    #card-displayer {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            padding: 2rem;
+
+            color: index.$background-colour;
+            background-color: index.$fore-colour;
+
+            border-radius: 1rem;
+
+            h4 {
+                display: flex;
+                flex-direction: row;
+                place-content: baseline center;
+                place-items: baseline center;
+                place-self: start;
+                gap: 1rem;
+
+                button {
+                    all: unset;
+
+                    display: flex;
+                    place-content: center;
+                    place-items: center;
+
+                    padding: 0 0.5ch;
+
+                    border: 0.3rem solid index.$background-colour;
+                    border-radius: 100rem;
+
+                    cursor: pointer;
+
+                    transition: color 500ms, background-color 500ms;
+
+                    &:is(:hover, :focus-within) {
+                        color: index.$fore-colour;
+                        background-color: index.$background-colour;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (width > Page.$first-screen-width) or (orientaion: landscape) {
+
+    #main-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        place-items: start center;
+
+        padding: 6vw;
+
+        #welcome-section {
+            gap: 4vw;
+
+            h1 {
+                font-size: 4rem;
+
+                margin-top: -3vw;
+            }
+        }
+
+        #card-displayer {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto auto;
+
+            .card:first-of-type {
+                grid-column: 1/ -1;
+            }
+        }
+    }
+}
+
+@media (width <=Page.$second-screen-width) {
+    #main-section {
+        place-items: stretch;
+    }
+}

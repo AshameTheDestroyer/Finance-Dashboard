@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import Header from "../Header/Header";
+import Main from "../MainSection/MainSection";
 
 import "./Page.scss";
 
@@ -10,7 +11,10 @@ import "./Page.scss";
 export default function Page() {
     return (
         <>
-            <Header />
+            <main id="landing-section">
+                <Header />
+                <Main />
+            </main>
         </>
     );
 }

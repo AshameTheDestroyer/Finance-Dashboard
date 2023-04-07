@@ -32,10 +32,10 @@ function Navbar({
         <nav>
             <button id="nav-toggling-button" onClick={_ => navbarStatus.setIsNavbarClosed(!navbarStatus.isNavbarClosed)} />
 
-            <button><a>Statistics</a></button>
-            <button><a>Products</a></button>
-            <button><a>Support</a></button>
-            <button><a>Resources</a></button>
+            <NavbarButton>Statistics</NavbarButton>
+            <NavbarButton>Products</NavbarButton>
+            <NavbarButton>Support</NavbarButton>
+            <NavbarButton>Resources</NavbarButton>
         </nav>
     );
 }
@@ -45,9 +45,29 @@ function Navbar({
  */
 function AsideButtons() {
     return (
-        <aside>
+        <aside className="button-displayer">
             <button>Sign up</button>
-            <button className="intensified-button">Login</button>
+            <button className="emphasized-button">Login</button>
         </aside>
+    );
+}
+
+/** A navigation bar button.
+ * @param {Object} proeperties The proeperties of the Element.
+ * @param {Object} proeperties.children The children of the Navbar Button.
+ * @param {String} proeperties.iconURL The URL of icon of the Navbar Button.
+ * @param {String} proeperties.href The hypertext reference of the Navbar Button.
+ * @returns A Navbar Button Element.
+ */
+function NavbarButton({
+    children,
+    iconURL,
+    href,
+}) {
+    return (
+        <button className="navbar-button">
+            <figure />
+            <a href={href}>{children}</a>
+        </button>
     );
 }
