@@ -1,0 +1,69 @@
+@use "../index.scss";
+
+.income-displayer {
+    $positive-colour: hsl(120, 100%, 65%);
+    $negative-colour: hsl(0, 100%, 65%);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    section {
+        display: flex;
+        place-content: center stretch;
+        place-items: center stretch;
+        gap: 1rem;
+
+        .profit-displayer {
+            $padding: 0.5rem;
+            $icon-size: 2rem;
+
+            font-weight: bold;
+
+            position: relative;
+
+            padding: $padding;
+            padding-left: calc($icon-size + $padding * 2);
+
+            color: index.$half-transparent;
+
+            border-radius: 1rem;
+
+            &::before {
+                content: "";
+
+                position: absolute;
+                top: 50%;
+                left: $padding;
+                transform: translateY(-50%);
+
+                width: $icon-size;
+                aspect-ratio: 1;
+
+                background-image: url("../Icons/arrow_thin.svg");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 100%;
+
+                opacity: 0.6;
+                filter: invert(1);
+            }
+
+            &.positive {
+                background-color: $positive-colour;
+
+                &::before {
+                    transform: translateY(-50%) rotate(-135deg);
+                }
+            }
+
+            &.negative {
+                background-color: $negative-colour;
+
+                &::before {
+                    transform: translateY(-50%) rotate(-45deg);
+                }
+            }
+        }
+    }
+}

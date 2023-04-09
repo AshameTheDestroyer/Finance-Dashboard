@@ -10,13 +10,13 @@ import "./PieChartCard.scss";
  *      percentage: Number,
  *      colour: String,
  *      title: String,
- * }>} properties.progressValues An array of progress values that'll be displayed in the Pie Chart Card element.
+ * }>} properties.data An array of values that'll be displayed in the Pie Chart Card element.
  * @returns A Pie Chart Card element.
  */
 export default function PieChartCard({
     size = 70,
     thickness = 25,
-    progressValues = [],
+    data = [],
 }) {
     return (
         <div className="pie-chart-card">
@@ -26,8 +26,8 @@ export default function PieChartCard({
                     "--stroke-width": thickness + "px",
                 }}>
                     {
-                        progressValues?.map((_, i) =>
-                            <PieChartPiece size={size} progressValues={progressValues} index={i} key={i} />)
+                        data?.map((_, i) =>
+                            <PieChartPiece size={size} data={data} index={i} key={i} />)
                     }
                 </svg>
 
@@ -39,8 +39,8 @@ export default function PieChartCard({
 
             <main>
                 {
-                    progressValues.map((progressValue, i) =>
-                        <PercentageDisplayer {...progressValue} key={i} />
+                    data.map((datum, i) =>
+                        <PercentageDisplayer {...datum} key={i} />
                     )
                 }
             </main>
@@ -60,24 +60,24 @@ const
  *      percentage: Number,
  *      colour: String,
  *      title: String,
- * }>} properties.progressValues An array of progress values that'll be displayed in the Pie Chart Card element.
+ * }>} properties.data An array of values that'll be displayed in the Pie Chart Card element.
  * @param {Number} properties.index The index in which the Pie Chart Piece is drawn in the Pie Chart Card element.
  * @returns A Pie Chart Piece element.
  */
 function PieChartPiece({
     size,
-    progressValues = [],
+    data = [],
     index,
 }) {
-    let offset = progressValues
+    let offset = data
         .slice(index + 1)
         .reduce((accumlator, next) => accumlator + next.percentage, 0)
         * MAXIMUM_ROTATION_DEGREE / MAXIMUM_PERCENTAGE;
 
     return (
         <circle cx={size + "px"} cy={size + "px"} r={size + "px"} style={{
-            "--percentage": progressValues[index].percentage,
-            "--colour": progressValues[index].colour,
+            "--percentage": data[index].percentage,
+            "--colour": data[index].colour,
             "transform": `rotate(${offset}deg)`,
         }} />
     );
@@ -95,8 +95,12 @@ function PercentageDisplayer({
     colour,
     title,
 }) {
-    let percentageFloored = Number.parseFloat(percentage.toString().slice(undefined, 4)),
-        bigFinanceNumber = Number.parseFloat((percentageFloored * BIG_FINANCE_NUMBER / MAXIMUM_PERCENTAGE).toString().slice(undefined, 5));
+    let percentageFloored =
+        Number.parseFloat(percentage.toString().slice(undefined, 4));
+
+    let bigFinanceNumber =
+        Number.parseFloat((percentageFloored * BIG_FINANCE_NUMBER / MAXIMUM_PERCENTAGE)
+            .toString().slice(undefined, 5));
 
     return (
         <div className="percentage-displayer" style={{

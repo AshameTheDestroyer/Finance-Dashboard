@@ -94,6 +94,7 @@
         .card {
             display: flex;
             flex-direction: column;
+            place-content: space-between;
             gap: 2rem;
 
             padding: 2rem;
@@ -120,21 +121,43 @@
 
                     padding: 0 0.5ch;
 
-                    border: 0.3rem solid index.$background-colour;
+                    color: index.$half-transparent;
+
+                    border: 0.3rem solid index.$half-transparent;
                     border-radius: 100rem;
 
                     cursor: pointer;
 
-                    transition: color 500ms, background-color 500ms;
+                    transition:
+                        color 500ms,
+                        background-color 500ms,
+                        border-color 500ms;
 
                     &:is(:hover, :focus-within) {
                         color: index.$fore-colour;
-                        background-color: index.$background-colour;
+                        background-color: index.$half-transparent;
+
+                        border-color: transparent;
                     }
                 }
             }
+
+            main {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
         }
     }
+}
+
+:where(.bottom-chart-card) {
+    align-self: center;
+    justify-self: flex-end;
+
+    width: 100%;
+    max-width: 50vmin;
+    aspect-ratio: 1;
 }
 
 @media (width > Page.$first-screen-width) or (orientaion: landscape) {
@@ -152,7 +175,7 @@
             h1 {
                 font-size: 4rem;
 
-                margin-top: -3vw;
+                margin-top: -2vw;
             }
         }
 

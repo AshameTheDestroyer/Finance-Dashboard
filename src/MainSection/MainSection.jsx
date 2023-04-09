@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from "react";
 
-import "./MainSection.scss";
 import PieChartCard from "../PieChartCard/PieChartCard";
+import VerticalChartCard from "../VerticalChartCard/VerticalChartCard";
+import PointChartCard from "../PointChartCard/PointChartCard";
+import IncomeDisplayer from "../IncomeDisplayer/IncomeDisplayer";
+
+import {
+    PIE_CHART_DATA,
+    INCOME_VALUES,
+    VERTICAL_CHART_DATA,
+    POINT_CHART_DATA
+} from "../DataGenerator/DataGenerator";
+
+import "./MainSection.scss";
 
 /** The main content of the page.
  * @returns A Main element.
@@ -39,65 +50,25 @@ function WelcomeSection() {
     );
 }
 
-const PROGRESS_VALUES = GenerateProgressValues([
-    { percentage: 0, colour: "#ff3131", title: "Taxes" },
-    { percentage: 0, colour: "#00D647", title: "Income" },
-    { percentage: 0, colour: "#1c3cf1", title: "Loss" },
-    { percentage: 0, colour: "#ff891b", title: "Others" },
-]);
-
-/** Generate some random progress values.
- * @param {Array<{
- *      percentage: Number,
- *      colour: String,
- *      title: String,
- * }>} initialProgressValues The initial values that'll be used to generate random ones.
- * @returns 
- */
-function GenerateProgressValues(initialProgressValues) {
-    let maximumPercentage = 100,
-        maximumValue = maximumPercentage / 2,
-        currentMaximumPercentage = maximumPercentage;
-
-    currentMaximumPercentage = maximumPercentage;
-
-    initialProgressValues = initialProgressValues.map((progressValue, i) => {
-        const GeneratePercentage = () => {
-            let percentage = 0;
-
-            do { percentage = Math.random() * currentMaximumPercentage; }
-            while (percentage >= maximumValue);
-
-            return percentage;
-        };
-
-        let percentage = i == initialProgressValues.length - 1 ?
-            currentMaximumPercentage : GeneratePercentage();
-
-        currentMaximumPercentage -= percentage;
-
-        return {
-            ...progressValue,
-            percentage: percentage,
-        };
-    });
-
-    return initialProgressValues.sort((_, __) => 0.5 - Math.random());
-}
-
 /** The section that displays the cards of statistics in the page.
  * @returns A Card Displayer element.
  */
 function CardDisplayer() {
     return (
         <section id="card-displayer">
-            <Card title="Expense Category">
-                <PieChartCard progressValues={PROGRESS_VALUES} />
+            <Card title="Expenses Chart">
+                <PieChartCard data={PIE_CHART_DATA} />
             </Card>
 
-            <Card title="Income Analysis"></Card>
+            <Card title="Income Analysis">
+                <IncomeDisplayer {...INCOME_VALUES[0]} />
+                <VerticalChartCard data={VERTICAL_CHART_DATA} />
+            </Card>
 
-            <Card title="Expense Analysis"></Card>
+            <Card title="Expense Analysis">
+                <IncomeDisplayer {...INCOME_VALUES[1]} />
+                <PointChartCard data={POINT_CHART_DATA} />
+            </Card>
         </section>
     );
 }

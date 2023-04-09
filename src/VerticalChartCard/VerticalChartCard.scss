@@ -1,0 +1,66 @@
+@use "../index.scss";
+
+.vertical-chart-card {
+    $padding: 3rem;
+
+    position: relative;
+
+    width: calc(100% - $padding);
+
+    display: flex;
+    flex-direction: row;
+    place-content: end start;
+    place-items: end start;
+    gap: 10%;
+
+    margin: 0 0 $padding $padding;
+
+    div {
+        --index: 0;
+
+        position: absolute;
+        bottom: calc(var(--index) * (50% - $padding / 2));
+        left: calc(100% + $padding / 2);
+        transform: translateX(calc(-100% - $padding / 2));
+
+        width: 100%;
+        height: 1rem;
+
+        border-bottom: 0.2rem solid index.$half-transparent;
+
+        &::before {
+            content: attr(content);
+
+            position: absolute;
+            top: 0;
+            left: calc(-1ch - $padding);
+            transform: translateY(-50%);
+
+            color: index.$half-transparent;
+        }
+    }
+
+    figure {
+        --height: 100%;
+
+        position: relative;
+
+        width: 100%;
+        height: var(--height);
+
+        background-color: #1c3cf1;
+
+        z-index: 1;
+
+        &::before {
+            content: attr(month);
+
+            font-size: smaller;
+
+            position: absolute;
+            bottom: -$padding;
+
+            color: index.$half-transparent;
+        }
+    }
+}
