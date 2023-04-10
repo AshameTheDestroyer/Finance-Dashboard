@@ -1,0 +1,21 @@
+@use "../index.scss";
+
+.point-chart-card {
+    $colour: #ff891b;
+
+    svg {
+        width: 100%;
+        aspect-ratio: 1;
+
+        fill: transparent;
+        background-image: linear-gradient($colour, transparent);
+
+        stroke: $colour;
+        stroke-width: 0.2rem;
+
+        circle,
+        .fill-path {
+            fill: index.$fore-colour;
+        }
+    }
+}

@@ -26,7 +26,7 @@ export default function PieChartCard({
                     "--stroke-width": thickness + "px",
                 }}>
                     {
-                        data?.map((_, i) =>
+                        data.map((_, i) =>
                             <PieChartPiece size={size} data={data} index={i} key={i} />)
                     }
                 </svg>

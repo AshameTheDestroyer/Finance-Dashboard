@@ -1,32 +1,21 @@
 @use "../index.scss";
 @use "../Page/Page.scss";
+@use "../Mixins/Mixins.scss";
 
 #main-section {
-    display: flex;
-    flex-direction: column;
-    place-items: center;
-    gap: 4rem;
-
-    padding: 2rem;
+    @include Mixins.main-section();
 
     #welcome-section {
-        display: flex;
-        flex-direction: column;
-        place-content: start center;
-        place-items: start center;
-        gap: inherit;
+        @include Mixins.big-section();
 
         #news-displayer {
             $padding: 1rem;
 
+            @include Mixins.floating-header($padding);
+
             position: relative;
 
-            background-color: index.$background-colour;
-
-            padding: $padding;
             padding-left: calc(4ch + $padding * 2 + 1rem);
-
-            border-radius: 3rem;
 
             overflow: hidden;
 
@@ -50,10 +39,11 @@
         }
 
         h1 {
-            font-size: xx-large;
-            line-height: 5rem;
+            @include Mixins.beneath-floating-header();
+        }
 
-            margin-top: -1rem;
+        p {
+            color: index.$fore-darker-colour;
         }
 
         .emphasized-button {
@@ -82,6 +72,28 @@
 
             &:is(:hover, :focus-within)::after {
                 filter: index.$main-colour-filter;
+            }
+        }
+
+        footer {
+            width: 100%;
+
+            display: flex;
+            flex-direction: row;
+            place-content: space-between;
+            place-items: space-between;
+
+            .visualizer {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+
+
+                h2::after {
+                    content: "+";
+
+                    color: index.$main-colour
+                }
             }
         }
     }
@@ -121,23 +133,18 @@
 
                     padding: 0 0.5ch;
 
-                    color: index.$half-transparent;
+                    color: index.$fore-darker-colour;
 
-                    border: 0.3rem solid index.$half-transparent;
+                    border: 0.3rem solid index.$fore-darker-colour;
                     border-radius: 100rem;
 
                     cursor: pointer;
 
-                    transition:
-                        color 500ms,
-                        background-color 500ms,
-                        border-color 500ms;
+                    transition: color 500ms, background-color 500ms;
 
                     &:is(:hover, :focus-within) {
                         color: index.$fore-colour;
-                        background-color: index.$half-transparent;
-
-                        border-color: transparent;
+                        background-color: index.$fore-darker-colour;
                     }
                 }
             }
@@ -168,6 +175,7 @@
         place-items: start center;
 
         padding: 6vw;
+        padding-bottom: 0;
 
         #welcome-section {
             gap: 4vw;

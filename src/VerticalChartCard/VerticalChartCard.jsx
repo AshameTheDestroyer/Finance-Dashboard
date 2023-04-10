@@ -12,23 +12,33 @@ export default function VerticalChartCard({
 }) {
     const MULTIPLY_TO_ONE_HUNDRED = 10;
 
+    const GetMonth = (i = 0) =>
+        new Date(2000, i)
+            .toDateString().substring(4, 7);
+
     return (
         <div className="bottom-chart-card vertical-chart-card">
+            <HeightPeaks />
+            {
+                data.map((datum, i) =>
+                    <figure month={GetMonth(i)} key={i}
+                        style={{ "--height": datum * MULTIPLY_TO_ONE_HUNDRED + "%" }} />)
+            }
+        </div>
+    );
+}
+
+/** The peaks that refer to heights that the chart is representing.
+ * @returns A Height Peaks element.
+ */
+function HeightPeaks() {
+    return (
+        <>
             {
                 Array(3).fill(null)
                     .map((_, i) =>
                         <div content={i * 5 + "K"} style={{ "--index": i }} key={i} />)
             }
-
-            {
-                data.map((datum, i) =>
-                    <figure
-                        month={new Date(2000, i).
-                            toDateString().substring(4, 7)}
-                        style={{
-                            "--height": datum * MULTIPLY_TO_ONE_HUNDRED + "%"
-                        }} key={i} />)
-            }
-        </div>
+        </>
     );
 }

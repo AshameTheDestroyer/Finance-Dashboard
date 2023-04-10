@@ -42,9 +42,15 @@ function WelcomeSection() {
                 that we provied to help you out?
             </p>
 
-            <footer className="button-displayer">
+            <section className="button-displayer">
                 <button className="emphasized-button">Get started</button>
                 <button>Learn more</button>
+            </section>
+
+            <footer>
+                <Visualizer title="Downloads" />
+                <Visualizer title="Teamups" isThousand={false} />
+                <Visualizer title="Users" />
             </footer>
         </section>
     );
@@ -56,16 +62,16 @@ function WelcomeSection() {
 function CardDisplayer() {
     return (
         <section id="card-displayer">
-            <Card title="Expenses Chart">
+            <Card title="Expense Pie Chart">
                 <PieChartCard data={PIE_CHART_DATA} />
             </Card>
 
-            <Card title="Income Analysis">
+            <Card title="Income Overview">
                 <IncomeDisplayer {...INCOME_VALUES[0]} />
                 <VerticalChartCard data={VERTICAL_CHART_DATA} />
             </Card>
 
-            <Card title="Expense Analysis">
+            <Card title="Profit Visualizer">
                 <IncomeDisplayer {...INCOME_VALUES[1]} />
                 <PointChartCard data={POINT_CHART_DATA} />
             </Card>
@@ -90,6 +96,26 @@ function Card({
                 <button title="Click for more information.">i</button>
             </h4>
             <main>{children}</main>
+        </div>
+    );
+}
+
+const MAXIMUM_VISUALIZER_VALUE = 1000;
+
+/** An element that visualizes some counter with a title.
+ * @param {Object} properties The properties of the element. 
+ * @param {String} properties.title The title of the Visualizer.
+ * @param {Boolean} properties.isThousand Determines whether or not the number written is in thousands.
+ * @returns A Visualizer element.
+ */
+function Visualizer({
+    title,
+    isThousand = true,
+}) {
+    return (
+        <div className="visualizer">
+            <h2>{~~(Math.max(Math.random(), 0.1) * MAXIMUM_VISUALIZER_VALUE)}{isThousand && "K"}</h2>
+            <p>{title}</p>
         </div>
     );
 }
