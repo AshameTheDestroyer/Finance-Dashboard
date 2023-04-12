@@ -168,7 +168,6 @@
                         overflow: hidden;
 
                         transition: opacity 500ms;
-
                     }
                 }
 
@@ -204,8 +203,10 @@
                 }
 
                 @for $i from 1 to 15 {
+
                     &:nth-child(#{$i}) {
                         figure {
+
                             --icon-url: url("../Icons/Individuals/peep-#{$i}.svg");
                         }
                     }
