@@ -36,7 +36,7 @@ export default function Footer() {
                 <h4>Products</h4>
 
                 <LinkButton text="Free use" href="#free-use-plan-displayer" />
-                <LinkButton text="Committed" href="#committed--plan-displayer" />
+                <LinkButton text="Committed" href="#committed-plan-displayer" />
                 <LinkButton text="Dedicated" href="#dedicated-plan-displayer" />
             </section>
 
@@ -58,19 +58,23 @@ export default function Footer() {
             <section id="social-media-link-displayer">
                 <h4>Social Media</h4>
 
-                <LinkButton id="github-link-button" text="GitHub" href="https://www.github.com/AshameTheDestroyer">
+                <LinkButton id="github-link-button" target="blank_"
+                    text="GitHub" href="https://www.github.com/AshameTheDestroyer">
                     <figure />
                 </LinkButton>
 
-                <LinkButton id="linkedin-link-button" text="LinkedIn" href="https://www.linkedin.com/in/ashamethedestroyer/">
+                <LinkButton id="linkedin-link-button" target="blank_"
+                    text="LinkedIn" href="https://www.linkedin.com/in/ashamethedestroyer/">
                     <figure />
                 </LinkButton>
 
-                <LinkButton id="twitter-link-button" text="Twitter" href="https://twitter.com/AshameDestroyer">
+                <LinkButton id="twitter-link-button" target="blank_"
+                    text="Twitter" href="https://twitter.com/AshameDestroyer">
                     <figure />
                 </LinkButton>
 
-                <LinkButton id="telegram-link-button" text="Telegram" href="https://www.t.me/ashamethedestroyer">
+                <LinkButton id="telegram-link-button" target="blank_"
+                    text="Telegram" href="https://www.t.me/ashamethedestroyer">
                     <figure />
                 </LinkButton>
 
