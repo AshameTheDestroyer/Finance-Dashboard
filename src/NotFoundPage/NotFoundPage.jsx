@@ -23,7 +23,7 @@ export default function NotFoundPage() {
                     an unimplemented section of the website.
                 </p>
 
-                <LinkButton href="/" text="Go back" className="emphasized-button arrowed-button" />
+                <LinkButton href="../" text="Go back" className="emphasized-button arrowed-button" />
             </section>
         </main>
     );
