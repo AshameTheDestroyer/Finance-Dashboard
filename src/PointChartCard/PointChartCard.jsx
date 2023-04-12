@@ -18,7 +18,7 @@ export default function PointChartCard({
         <div className="bottom-chart-card point-chart-card">
             <svg viewBox="0 0 100 100">
                 <path d={`M -100 100 ${path} L 200 100`} />
-                <path className="fill-path" d={`M -100 0 ${path} L 200 0`} />
+                <path className="fill-path" d={`M -100 -100 ${path} L 200 -100`} />
                 {
                     data.slice(0, data.length - 1)
                         .map((datum, i) =>

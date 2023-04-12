@@ -4,6 +4,7 @@ import PieChartCard from "../PieChartCard/PieChartCard";
 import VerticalChartCard from "../VerticalChartCard/VerticalChartCard";
 import PointChartCard from "../PointChartCard/PointChartCard";
 import IncomeDisplayer from "../IncomeDisplayer/IncomeDisplayer";
+import LinkButton from "../LinkButton/LinkButton";
 
 import {
     PIE_CHART_DATA,
@@ -12,14 +13,14 @@ import {
     POINT_CHART_DATA
 } from "../DataGenerator/DataGenerator";
 
-import "./MainSection.scss";
+import "./StatisticSection.scss";
 
 /** The main content of the page.
- * @returns A Main element.
+ * @returns A Statistic Section element.
  */
-export default function Main() {
+export default function StatisticSection() {
     return (
-        <main id="main-section">
+        <main id="statistic-section">
             <WelcomeSection />
             <CardDisplayer />
         </main>
@@ -43,8 +44,8 @@ function WelcomeSection() {
             </p>
 
             <section className="button-displayer">
-                <button className="emphasized-button">Get started</button>
-                <button>Learn more</button>
+                <LinkButton text="Get started" id="get-started-button" className="emphasized-button arrowed-button" />
+                <LinkButton text="Learn more" />
             </section>
 
             <footer>
@@ -61,17 +62,17 @@ function WelcomeSection() {
  */
 function CardDisplayer() {
     return (
-        <section id="card-displayer">
-            <Card title="Expense Pie Chart">
+        <section id="statistic-displayer">
+            <Card id="expense-pie-chart" title="Expense Pie Chart">
                 <PieChartCard data={PIE_CHART_DATA} />
             </Card>
 
-            <Card title="Income Overview">
+            <Card id="income-overview" title="Income Overview">
                 <IncomeDisplayer {...INCOME_VALUES[0]} />
                 <VerticalChartCard data={VERTICAL_CHART_DATA} />
             </Card>
 
-            <Card title="Profit Visualizer">
+            <Card id="profit-visualizer" title="Profit Visualizer">
                 <IncomeDisplayer {...INCOME_VALUES[1]} />
                 <PointChartCard data={POINT_CHART_DATA} />
             </Card>
@@ -83,17 +84,19 @@ function CardDisplayer() {
  * @param {Object} properties The properties of the element.
  * @param {Object} properties.children The children of the Card element.
  * @param {String} properties.title The title of the Card element.
+ * @param {String} properties.id The identifier of the Card element.
  * @returns A Card element.
  */
 function Card({
     children,
     title,
+    id,
 }) {
     return (
-        <div className="card">
+        <div id={id} className="card">
             <h4>
                 <p>{title}</p>
-                <button title="Click for more information.">i</button>
+                <LinkButton text="i" title="Click for more information." />
             </h4>
             <main>{children}</main>
         </div>
@@ -114,7 +117,11 @@ function Visualizer({
 }) {
     return (
         <div className="visualizer">
-            <h2>{~~(Math.max(Math.random(), 0.1) * MAXIMUM_VISUALIZER_VALUE)}{isThousand && "K"}</h2>
+            <h2>
+                {~~(Math.max(Math.random(), 0.1) * MAXIMUM_VISUALIZER_VALUE)}
+                {isThousand && "K"}
+            </h2>
+
             <p>{title}</p>
         </div>
     );

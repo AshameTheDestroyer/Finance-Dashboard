@@ -15,19 +15,6 @@ header {
 
     z-index: 2;
 
-    #logo {
-        pointer-events: none;
-
-        &::first-letter {
-            padding: 0.5rem 1rem;
-            margin-right: 0.25ch;
-
-            background-color: index.$main-colour;
-
-            border-radius: 100%;
-        }
-    }
-
     nav {
 
         #nav-toggling-button {
@@ -55,6 +42,34 @@ header {
 
     aside {
         place-self: center end;
+    }
+
+    #jump-to-top-button {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+
+        button {
+            transform: rotate(180deg);
+
+            width: 4rem;
+            aspect-ratio: 1;
+
+            padding: 2rem;
+
+            background-color: index.$background-darker-colour;
+
+            background-image: url("../Icons/arrow_thick.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 75%;
+
+            border-radius: 100%;
+
+            &:is(:hover, :focus-within) {
+                background-color: index.$background-colour;
+            }
+        }
     }
 }
 
@@ -86,6 +101,10 @@ header {
 
         transition: max-width 1500ms;
 
+        z-index: 3;
+
+        overflow: hidden;
+
         #nav-toggling-button {
             display: block !important;
 
@@ -102,11 +121,16 @@ header {
         }
 
         .navbar-button {
+            --icon-url: url("");
+
             display: grid;
             grid-template-columns: auto 1fr;
             place-content: center;
             place-items: center;
             gap: 1rem;
+
+            padding: 1rem;
+            padding-right: 14rem;
 
             transition: background-color 500ms, gap 500ms;
 
@@ -119,17 +143,38 @@ header {
 
                 width: 3rem;
                 aspect-ratio: 1;
-                background-color: index.$fore-colour;
+
+                background-image: var(--icon-url);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 100%;
 
                 border-radius: 100%;
             }
 
             a {
                 max-width: 100%;
+                margin-left: 4rem;
 
                 opacity: 1;
 
                 transition: opacity 500ms 500ms, max-width 500ms 500ms;
+            }
+
+            &#statistic-section-button {
+                --icon-url: url("../Icons/statistics.svg");
+            }
+
+            &#product-section-button {
+                --icon-url: url("../Icons/product-2.svg");
+            }
+
+            &#support-section-button {
+                --icon-url: url("../Icons/support.svg");
+            }
+
+            &#resource-section-button {
+                --icon-url: url("../Icons/link.svg");
             }
         }
     }
@@ -146,6 +191,8 @@ header {
         }
 
         .navbar-button {
+            min-width: 0;
+
             gap: 0;
 
             &:is(:hover, :focus) {
@@ -170,10 +217,6 @@ header {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
         gap: 0;
-
-        #logo {
-            place-self: center start;
-        }
 
         nav {
             width: 100%;

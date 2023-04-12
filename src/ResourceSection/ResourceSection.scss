@@ -1,0 +1,219 @@
+@use "../index.scss";
+@use "../Page/Page.scss";
+@use "../Mixins/Mixins.scss";
+
+#resource-section {
+    @include Mixins.main-section();
+
+    min-height: calc(100vh - 4rem - Page.$footer-height);
+
+    #elon-musk-thanking-section {
+        min-height: calc(50vh - 6rem);
+
+        display: flex;
+        flex-direction: column;
+        place-content: start center;
+        place-items: start center;
+
+        &>p {
+            $pseudo-element-rotation: 5deg;
+            $margin-bottom: 10rem;
+
+            position: relative;
+
+            transform: translateY(calc($margin-bottom / 2));
+            margin-bottom: $margin-bottom;
+
+            &::before,
+            &::after {
+                font-size: 10rem;
+                font-family: auto;
+                font-weight: bold;
+
+                position: absolute;
+
+                color: index.$main-colour;
+            }
+
+            &::before {
+                content: open-quote;
+                top: 0;
+                left: 0;
+                transform: translateY(-65%) rotate(-$pseudo-element-rotation);
+            }
+
+            &::after {
+                content: close-quote;
+                bottom: 0;
+                right: 0;
+                transform: translateY(80%) rotate($pseudo-element-rotation);
+            }
+
+            a {
+                font-weight: bold;
+                text-decoration: underline;
+            }
+        }
+
+        #elon-musk-account-displayer {
+            display: flex;
+            place-content: center;
+            place-items: center;
+            gap: 2rem;
+
+            button {
+                grid-column: 1;
+                grid-row: 1 / -1;
+
+                width: 6rem;
+                aspect-ratio: 1;
+
+                padding: 0;
+
+                background-color: index.$fore-colour;
+
+                border: none;
+                border-radius: 100%;
+
+                figure {
+                    width: 100%;
+                    aspect-ratio: 1;
+
+                    background-image: url("../Images/elon-musk.jpeg");
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 100%;
+
+                    border-radius: 100%;
+                }
+            }
+
+            div {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+
+                transform: translateY(-1rem);
+
+                p {
+                    color: index.$fore-darker-colour;
+                }
+            }
+        }
+    }
+
+    main {
+        @include Mixins.big-section();
+        place-content: stretch;
+        place-items: stretch;
+
+        height: calc(50vh - 6rem);
+
+        gap: 2rem;
+
+        padding: 2rem;
+
+        overflow: auto;
+
+        .foldable-question {
+            $padding-left: 3.5rem;
+
+            display: flex;
+            flex-direction: column;
+            place-content: stretch;
+            place-items: stretch;
+            gap: 1rem;
+
+            button {
+                position: relative;
+
+                text-align: start;
+
+                padding: 1rem;
+                padding-left: 0;
+                margin-left: $padding-left;
+
+                border: none;
+                border-bottom: 0.2rem solid index.$background-colour;
+                border-radius: 0;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: -3.5rem;
+                    transform: translateY(-50%) rotate(-90deg);
+
+                    width: 1rem;
+                    aspect-ratio: 1;
+
+                    padding: 1rem;
+
+                    background-image: url("../Icons/combo_box_arrow.svg");
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 100%;
+
+                    border-radius: 100%;
+
+                    transition: transform 500ms;
+                }
+
+                &:is(:hover, :focus-within) {
+                    background-color: unset;
+                }
+            }
+
+            p {
+                max-height: 0;
+
+                margin-left: $padding-left;
+
+                color: index.$fore-darker-colour;
+
+                overflow: hidden;
+
+                transition: max-height 500ms;
+            }
+
+            &.folded {
+
+                button::before {
+                    transform: translateY(-50%) rotate(0);
+                }
+
+                p {
+                    max-height: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (width > Page.$first-screen-width) {
+    #resource-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        place-content: center;
+        place-items: center;
+
+        #elon-musk-thanking-section {
+
+            #elon-musk-account-displayer {
+
+                figure {
+                    width: 10rem;
+                }
+
+                div {
+                    margin-top: 2rem;
+                }
+            }
+        }
+
+        main {
+            grid-column: 1;
+            grid-row: 1;
+        }
+    }
+}

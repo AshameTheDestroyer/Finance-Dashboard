@@ -2,7 +2,7 @@
 @use "../Page/Page.scss";
 @use "../Mixins/Mixins.scss";
 
-#main-section {
+#statistic-section {
     @include Mixins.main-section();
 
     #welcome-section {
@@ -49,29 +49,17 @@
         .emphasized-button {
             position: relative;
 
-            padding-right: calc(2ch + 2rem);
-
-            &::after {
-                content: "";
-
-                position: absolute;
-                inset: 0.5rem 0.5ch 0.5rem auto;
-                transform: rotate(-90deg);
-
-                aspect-ratio: 1;
-
-                padding: 1rem;
-
-                background-image: url("../Icons/arrow_thin.svg");
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: 100%;
-
-                transition: filter 500ms;
-            }
+            padding-left: calc(2ch + 12rem);
 
             &:is(:hover, :focus-within)::after {
                 filter: index.$main-colour-filter;
+            }
+
+            a {
+                inset: auto;
+                top: 50%;
+                left: -0.5rem;
+                transform: translate(2rem, -50%);
             }
         }
 
@@ -92,16 +80,16 @@
                 h2::after {
                     content: "+";
 
-                    color: index.$main-colour
+                    color: index.$main-colour;
                 }
             }
         }
     }
 
-    #card-displayer {
+    #statistic-displayer {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 1.5rem;
 
         .card {
             display: flex;
@@ -119,19 +107,24 @@
             h4 {
                 display: flex;
                 flex-direction: row;
-                place-content: baseline center;
-                place-items: baseline center;
+                place-content: center;
+                place-items: center;
                 place-self: start;
                 gap: 1rem;
 
                 button {
                     all: unset;
 
+                    position: relative;
+
                     display: flex;
                     place-content: center;
                     place-items: center;
 
-                    padding: 0 0.5ch;
+                    width: 1rem;
+                    aspect-ratio: 1;
+
+                    padding: 0.5ch;
 
                     color: index.$fore-darker-colour;
 
@@ -152,7 +145,7 @@
             main {
                 display: flex;
                 flex-direction: column;
-                gap: 2rem;
+                gap: 1.5rem;
             }
         }
     }
@@ -169,12 +162,12 @@
 
 @media (width > Page.$first-screen-width) or (orientaion: landscape) {
 
-    #main-section {
+    #statistic-section {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        place-items: start center;
+        place-items: center;
 
-        padding: 6vw;
+        padding: 2vw;
         padding-bottom: 0;
 
         #welcome-section {
@@ -187,20 +180,21 @@
             }
         }
 
-        #card-displayer {
+        #statistic-displayer {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: auto auto;
+            gap: 1rem;
 
             .card:first-of-type {
-                grid-column: 1/ -1;
+                grid-column: 1 / -1;
             }
         }
     }
 }
 
 @media (width <=Page.$second-screen-width) {
-    #main-section {
+    #statistic-section {
         place-items: stretch;
     }
 }

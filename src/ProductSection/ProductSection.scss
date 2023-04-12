@@ -1,0 +1,149 @@
+@use "../index.scss";
+@use "../Page/Page.scss";
+@use "../Mixins/Mixins.scss";
+
+#product-section {
+    @include Mixins.main-section();
+
+    min-height: calc(100vh - 2rem);
+
+    place-content: start center;
+    place-items: start center;
+    gap: 3rem;
+
+    #product-label {
+        @include Mixins.floating-header();
+    }
+
+    h1 {
+        @include Mixins.beneath-floating-header();
+    }
+
+    p {
+        color: index.$fore-darker-colour;
+    }
+
+    &>main {
+        display: flex;
+        flex-direction: column;
+        place-content: center;
+        place-items: center;
+        gap: 2rem;
+
+        .plan-displayer {
+            display: grid;
+            grid-template-rows: 15vw 1fr;
+            place-content: center;
+            place-items: center;
+            gap: 2rem;
+
+            padding: 2rem;
+
+            color: index.$background-colour;
+            background-color: index.$fore-colour;
+
+            border-radius: 1rem;
+
+            figure {
+                --icon-url: url("");
+
+                width: 40%;
+                max-width: 8rem;
+                aspect-ratio: 1;
+
+                background-image: var(--icon-url);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 100%;
+
+                filter: invert(1);
+            }
+
+            main {
+                height: 100%;
+
+                display: flex;
+                flex-direction: column;
+                place-content: space-between;
+                gap: 1rem;
+
+                p {
+                    height: 100%;
+
+                    padding: 1rem;
+
+                    color: inherit;
+                    background-color: index.$fore-darker-colour;
+
+                    border-radius: 1rem;
+                }
+
+                button {
+                    place-self: end;
+
+                    &:is(:hover, :focus-within) {
+                        color: index.$fore-colour;
+                    }
+                }
+            }
+
+            &.emphasized {
+                color: index.$fore-colour;
+                background-color: index.$main-colour;
+
+                figure {
+                    filter: none;
+                }
+
+                main {
+
+                    p {
+                        background-color: index.$half-transparent;
+                    }
+
+                    button {
+                        border-color: index.$fore-colour;
+
+                        &:is(:hover, :focus-within) {
+                            color: index.$main-colour;
+                            background-color: index.$fore-colour;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (width > Page.$second-screen-width) {
+    #product-section {
+        padding-top: 2rem;
+
+        &>main {
+            width: 100%;
+
+            .plan-displayer {
+                max-width: 50vw;
+            }
+        }
+    }
+}
+
+@media (width > Page.$first-screen-width) {
+    #product-section {
+        padding: 0 8rem;
+        padding-bottom: 2rem;
+
+        &>main {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            place-content: stretch;
+            place-items: stretch;
+            gap: 4rem;
+
+            .plan-displayer {
+                grid-template-rows: 8rem 1fr;
+            }
+        }
+    }
+}

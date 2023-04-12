@@ -2,18 +2,17 @@
 
 $first-screen-width: 800px;
 $second-screen-width: 500px;
+$footer-height: 40vh;
+
+html {
+    scroll-padding-top: 0rem;
+}
 
 body {
     background-color: index.$background-darker-colour;
 }
 
-button {
-    background-color: transparent;
-
-    border: 0.2rem solid index.$main-colour;
-}
-
-#landing-section {
+#page {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
@@ -22,7 +21,9 @@ button {
 }
 
 button {
-    border-color: index.$background-colour;
+    background-color: transparent;
+
+    border: 0.2rem solid index.$background-colour;
 
     transition: background-color 500ms, color 500ms;
 
@@ -42,10 +43,54 @@ button {
     }
 }
 
+.arrowed-button {
+
+    &::after {
+        content: "";
+
+        position: absolute;
+        inset: 0.5rem 0.5ch 0.5rem auto;
+        transform: rotate(-90deg);
+
+        aspect-ratio: 1;
+
+        padding: 1rem;
+
+        background-image: url("../Icons/arrow_thin.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+
+        transition: filter 500ms;
+    }
+
+    a {
+        right: 3rem;
+    }
+}
+
 .button-displayer {
     display: flex;
     flex-direction: row;
     place-content: center;
     place-items: center;
     gap: 1rem;
+}
+
+.logo {
+    pointer-events: none;
+
+    &::first-letter {
+        padding: 0.5rem 1rem;
+        margin-right: 0.25ch;
+
+        background-color: index.$main-colour;
+
+        border-radius: 100%;
+    }
+
+    @media (width <=$second-screen-width) {
+
+        place-self: center start;
+    }
 }

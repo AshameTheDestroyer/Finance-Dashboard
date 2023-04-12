@@ -22,7 +22,7 @@ html {
     font-size: 62.5%;
 }
 
-body {
+:where(body) {
     font-size: 1.6rem;
     font-family: "Cascadia Code", CascadiaCode, Consolas, Arial;
 
@@ -35,7 +35,7 @@ body {
 }
 
 input,
-button {
+:where(button) {
     font-family: inherit;
     font-size: inherit;
 
@@ -88,6 +88,7 @@ ul {
 
 ::-webkit-scrollbar {
     width: 1rem;
+    height: 1rem;
 }
 
 ::-webkit-scrollbar-track {

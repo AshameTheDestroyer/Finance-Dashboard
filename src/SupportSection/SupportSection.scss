@@ -1,0 +1,285 @@
+@use "../index.scss";
+@use "../Mixins/Mixins.scss";
+@use "../Page/Page.scss";
+
+#support-section {
+    @include Mixins.main-section();
+
+    min-height: calc(100vh - 4rem);
+
+    main {
+        @include Mixins.big-section();
+
+        #support-label {
+            @include Mixins.floating-header();
+        }
+
+        h1 {
+            @include Mixins.beneath-floating-header();
+        }
+
+        p {
+            color: index.$fore-darker-colour;
+        }
+
+        .arrowed-button {
+            padding-right: calc(2ch + 11rem);
+        }
+    }
+
+    #world-map-figure {
+        position: relative;
+
+        width: 70vmin;
+        aspect-ratio: 1;
+
+        background-image: radial-gradient(blue, darkblue);
+
+        border-radius: 100%;
+
+        overflow: hidden;
+
+        &::after {
+            --background-offset: 0%;
+
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background-image: url("../Icons/world_map.svg");
+            background-position: center;
+            background-size: 250%;
+
+            filter: sepia(1) saturate(500%) hue-rotate(150deg) brightness(80%) contrast(120%);
+
+            animation-name: world-map-rotation;
+            animation-duration: 100s;
+            animation-timing-function: cubic-bezier(1, 1, 1, 1);
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+
+            @keyframes world-map-rotation {
+
+                from {
+                    background-position-x: 0%;
+                }
+
+                to {
+                    background-position-x: 100%;
+                }
+            }
+
+            @media (preference: preferred-reduced-motion) {
+                animation: none;
+            }
+        }
+    }
+
+    footer {
+        $padding: 2rem;
+
+        width: 70vw;
+
+        position: relative;
+
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 2rem;
+
+        padding: $padding 0;
+
+        section {
+            scroll-behavior: smooth;
+
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+
+            overflow: hidden;
+
+            .individual-button {
+                position: relative;
+
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+                place-content: start;
+                place-items: start;
+
+                min-width: 10rem;
+
+                padding: 0;
+
+                border: none;
+
+                &:is(:hover, :focus-within) {
+                    background-color: unset;
+
+                    figure {
+                        transform: scale(0);
+                    }
+
+                    a {
+                        transform: scale(1);
+                    }
+                }
+
+                figure {
+                    --icon-url: url("");
+
+                    position: relative;
+
+                    min-width: 8rem;
+                    aspect-ratio: 1;
+
+                    grid-column: 1;
+                    grid-row: 1;
+
+                    background-color: index.$fore-colour;
+                    background-image: var(--icon-url);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 80%;
+                    background-position-y: -100%;
+
+                    border-radius: 100%;
+
+                    transition: transform 500ms;
+
+                    &:after {
+                        content: "$" attr(donation-amount);
+
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(calc(50% - 3ch), calc(50% - 0.5rem));
+
+                        min-width: 5ch;
+
+                        display: flex;
+
+                        padding: 0.5rem;
+
+                        background-color: index.$main-colour;
+
+                        border-radius: 100rem;
+
+                        overflow: hidden;
+
+                        transition: opacity 500ms;
+
+                    }
+                }
+
+                a {
+                    $padding: 1rem;
+
+                    font-size: smaller;
+
+                    transform: scale(0);
+
+                    width: calc(100% - $padding * 2);
+                    height: calc(100% - $padding * 2);
+
+                    display: flex;
+                    place-content: center;
+                    place-items: center;
+                    grid-column: 1;
+                    grid-row: 1;
+
+                    padding: $padding;
+
+                    background-color: index.$background-colour;
+
+                    border-radius: inherit;
+
+                    overflow: hidden;
+                    overflow-wrap: break-word;
+                    line-break: anywhere;
+
+                    transition: transform 500ms;
+
+                    z-index: 1;
+                }
+
+                @for $i from 1 to 15 {
+                    &:nth-child(#{$i}) {
+                        figure {
+                            --icon-url: url("../Icons/Individuals/peep-#{$i}.svg");
+                        }
+                    }
+                }
+            }
+        }
+
+        &>button {
+            width: 2rem;
+            aspect-ratio: 1;
+
+            place-self: center;
+
+            padding: 2.2rem;
+
+            background-image: url("../Icons/arrow_thin.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 75%;
+
+            border: none;
+            border-radius: 100%;
+
+            &#previous-individual-button {
+                transform: rotate(+90deg);
+            }
+
+            &#next-individual-button {
+                transform: rotate(-90deg);
+            }
+        }
+    }
+}
+
+@media (width > Page.$first-screen-width) {
+
+    #support-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        place-content: center;
+        place-items: center;
+        gap: 2rem;
+
+        padding: 2rem 8rem;
+
+        main {
+            grid-column: 2;
+        }
+
+        #world-map-figure {
+            width: 80%;
+
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        footer {
+            $padding: 2rem;
+
+            width: calc(100% - $padding);
+
+            grid-column: 1 / -1;
+
+            section {
+                gap: 2rem;
+
+                figure {
+                    min-width: 10rem;
+
+                    &::after {
+                        transform: translate(50%, 50%);
+                    }
+                }
+            }
+        }
+    }
+}

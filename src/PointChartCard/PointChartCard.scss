@@ -3,15 +3,14 @@
 .point-chart-card {
     $colour: #ff891b;
 
-    svg {
-        width: 100%;
-        aspect-ratio: 1;
+    position: relative;
 
+    svg {
         fill: transparent;
         background-image: linear-gradient($colour, transparent);
 
         stroke: $colour;
-        stroke-width: 0.2rem;
+        stroke-width: 0.15rem;
 
         circle,
         .fill-path {
