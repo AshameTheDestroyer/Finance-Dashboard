@@ -15,6 +15,20 @@
         place-content: start center;
         place-items: start center;
 
+        overflow: hidden;
+
+        opacity: 0;
+
+        transition: opacity 2000ms;
+
+        &.shown {
+            opacity: 1;
+
+            #elon-musk-account-displayer {
+                transform: translateX(0);
+            }
+        }
+
         &>p {
             $pseudo-element-rotation: 5deg;
             $margin-bottom: 10rem;
@@ -56,10 +70,14 @@
         }
 
         #elon-musk-account-displayer {
+            transform: translateX(-150%);
+
             display: flex;
             place-content: center;
             place-items: center;
             gap: 2rem;
+
+            transition: transform 500ms;
 
             button {
                 grid-column: 1;
@@ -115,14 +133,30 @@
 
         overflow: auto;
 
+        opacity: 0;
+
+        transition: opacity 2000ms;
+
+        &.shown {
+            opacity: 1;
+
+            .foldable-question {
+                transform: translateX(0%);
+            }
+        }
+
         .foldable-question {
             $padding-left: 3.5rem;
+
+            transform: translateX(-150%);
 
             display: flex;
             flex-direction: column;
             place-content: stretch;
             place-items: stretch;
             gap: 1rem;
+
+            transition: transform 1000ms;
 
             button {
                 position: relative;

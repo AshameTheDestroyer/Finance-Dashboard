@@ -20,7 +20,7 @@ export default function PieChartCard({
 }) {
     return (
         <div className="pie-chart-card">
-            <figure className="pie-chart-displayer">
+            <figure className="pie-chart-displayer observable">
                 <svg style={{
                     "--width": size * 2 + "px",
                     "--stroke-width": thickness + "px",

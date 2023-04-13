@@ -8,16 +8,31 @@
     #welcome-section {
         @include Mixins.big-section();
 
+        opacity: 0;
+
+        transition: opacity 2000ms;
+
+        &.shown {
+            opacity: 1;
+
+            #news-displayer {
+                transform: translateX(0%);
+            }
+        }
+
         #news-displayer {
             $padding: 1rem;
 
             @include Mixins.floating-header($padding);
 
             position: relative;
+            transform: translateX(-150%);
 
             padding-left: calc(4ch + $padding * 2 + 1rem);
 
             overflow: hidden;
+
+            transition: transform 500ms;
 
             &::before {
                 content: "News";
@@ -71,11 +86,20 @@
             place-content: space-between;
             place-items: space-between;
 
+            &.shown {
+                .visualizer {
+                    transform: scale(1);
+                }
+            }
+
             .visualizer {
+                transform: scale(0);
+
                 display: flex;
                 flex-direction: column;
                 gap: 0.5rem;
 
+                transition: transform 500ms;
 
                 h2::after {
                     content: "+";
@@ -103,6 +127,14 @@
             background-color: index.$fore-colour;
 
             border-radius: 1rem;
+
+            opacity: 0;
+
+            transition: opacity 1000ms;
+
+            &.shown {
+                opacity: 1;
+            }
 
             h4 {
                 display: flex;

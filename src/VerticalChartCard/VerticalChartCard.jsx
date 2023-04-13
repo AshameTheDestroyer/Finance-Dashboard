@@ -17,8 +17,9 @@ export default function VerticalChartCard({
             .toDateString().substring(4, 7);
 
     return (
-        <div className="bottom-chart-card vertical-chart-card">
+        <div className="bottom-chart-card vertical-chart-card observable">
             <HeightPeaks />
+
             {
                 data.map((datum, i) =>
                     <figure month={GetMonth(i)} key={i}

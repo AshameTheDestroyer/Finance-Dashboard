@@ -14,7 +14,7 @@ import gold_bars_icon from "../Icons/gold_bars.svg";
  */
 export default function ProductSection() {
     return (
-        <section id="product-section">
+        <section id="product-section" className="observable">
             <div id="product-label">Our best features</div>
 
             <h1>Select the plan that suits your needs the most</h1>
@@ -79,7 +79,7 @@ function PlanDisplayer({
     id,
 }) {
     return (
-        <div id={id} className={`plan-displayer ${isEmphasized ? "emphasized" : ""}`}>
+        <div id={id} className={`plan-displayer ${isEmphasized ? "emphasized" : ""} observable`}>
             <figure style={{ "--icon-url": `url("${iconURL}")` }} />
 
             <main>

@@ -10,8 +10,26 @@
     main {
         @include Mixins.big-section();
 
+        opacity: 0;
+
+        transition: opacity 2000ms;
+
+        overflow: hidden;
+
+        &.shown {
+            opacity: 1;
+
+            #support-label {
+                transform: translateX(0%);
+            }
+        }
+
         #support-label {
             @include Mixins.floating-header();
+
+            transform: translateX(-200%);
+
+            transition: transform 500ms;
         }
 
         h1 {
@@ -30,6 +48,8 @@
     #world-map-figure {
         position: relative;
 
+        transform: scale(0.2);
+
         width: 70vmin;
         aspect-ratio: 1;
 
@@ -38,6 +58,12 @@
         border-radius: 100%;
 
         overflow: hidden;
+
+        transition: transform 1000ms;
+
+        &.shown {
+            transform: scale(1);
+        }
 
         &::after {
             --background-offset: 0%;
@@ -70,7 +96,7 @@
                 }
             }
 
-            @media (preference: preferred-reduced-motion) {
+            @media (prefers-reduced-motion) {
                 animation: none;
             }
         }
@@ -88,6 +114,12 @@
         gap: 2rem;
 
         padding: $padding 0;
+
+        &.shown section .individual-button {
+            transform: translateX(0%) !important;
+
+            opacity: 1;
+        }
 
         section {
             scroll-behavior: smooth;
@@ -112,6 +144,10 @@
                 padding: 0;
 
                 border: none;
+
+                opacity: 0;
+
+                transition: transform 1000ms, opacity 2000ms;
 
                 &:is(:hover, :focus-within) {
                     background-color: unset;
@@ -205,8 +241,9 @@
                 @for $i from 1 to 15 {
 
                     &:nth-child(#{$i}) {
-                        figure {
+                        transform: translateX(calc(-150% * $i / 2));
 
+                        figure {
                             --icon-url: url("../Icons/Individuals/peep-#{$i}.svg");
                         }
                     }

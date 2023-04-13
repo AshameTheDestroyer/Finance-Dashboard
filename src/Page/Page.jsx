@@ -6,6 +6,7 @@ import ProductSection from "../ProductSection/ProductSection";
 import SupportSection from "../SupportSection/SupportSection";
 import ResourceSection from "../ResourceSection/ResourceSection";
 import Footer from "../Footer/Footer";
+import Animate from "../Animator/Animator";
 
 import "./Page.scss";
 
@@ -13,6 +14,8 @@ import "./Page.scss";
  * @returns An element that contains everything in the document.
  */
 export default function Page() {
+    useEffect(() => Animate(), []);
+
     return (
         <main id="page">
             <Header />

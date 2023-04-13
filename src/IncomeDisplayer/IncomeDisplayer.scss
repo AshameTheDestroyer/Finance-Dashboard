@@ -1,8 +1,8 @@
 @use "../index.scss";
 
 .income-displayer {
-    $positive-colour: hsl(120, 100%, 65%);
-    $negative-colour: hsl(0, 100%, 65%);
+    $positive-colour: #4dff4d;
+    $negative-colour: #ff4d4d;
 
     display: flex;
     flex-direction: column;
@@ -14,6 +14,10 @@
         place-items: center stretch;
         gap: 1rem;
 
+        &.shown .profit-displayer {
+            transform: scaleX(1);
+        }
+
         .profit-displayer {
             $padding: 0.5rem;
             $icon-size: 2rem;
@@ -21,6 +25,8 @@
             font-weight: bold;
 
             position: relative;
+            transform: scaleX(0);
+            transform-origin: 0% 50%;
 
             padding: $padding;
             padding-left: calc($icon-size + $padding * 2);
@@ -28,6 +34,8 @@
             color: index.$half-transparent;
 
             border-radius: 1rem;
+
+            transition: transform 500ms;
 
             &::before {
                 content: "";

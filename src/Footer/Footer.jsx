@@ -10,7 +10,7 @@ import "./Footer.scss";
 export default function Footer() {
     return (
         <footer>
-            <section>
+            <section className="observable">
                 <h3 className="logo">Finance Dashboard</h3>
 
                 <h4>The best financial website out there</h4>
@@ -21,7 +21,7 @@ export default function Footer() {
                 </p>
             </section>
 
-            <section>
+            <section className="observable">
                 <h4>Statistics</h4>
 
                 <LinkButton text="News" href="#news-displayer" />
@@ -32,7 +32,7 @@ export default function Footer() {
             </section>
 
 
-            <section>
+            <section className="observable">
                 <h4>Products</h4>
 
                 <LinkButton text="Free use" href="#free-use-plan-displayer" />
@@ -40,7 +40,7 @@ export default function Footer() {
                 <LinkButton text="Dedicated" href="#dedicated-plan-displayer" />
             </section>
 
-            <section>
+            <section className="observable">
                 <h4>Support</h4>
 
                 <LinkButton text="Support us" href="#support-us-button" />
@@ -48,14 +48,14 @@ export default function Footer() {
             </section>
 
 
-            <section>
+            <section className="observable">
                 <h4>Resources</h4>
 
                 <LinkButton text="Elon's tweet" href="#elon-musk-thanking-section" />
                 <LinkButton text="Questions" href="#question-displayer" />
             </section>
 
-            <section id="social-media-link-displayer">
+            <section id="social-media-link-displayer" className="observable">
                 <h4>Social Media</h4>
 
                 <LinkButton id="github-link-button" target="blank_"

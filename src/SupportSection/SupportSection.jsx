@@ -16,7 +16,7 @@ export default function SupportSection() {
         <section id="support-section">
             <InformationSection />
 
-            <figure id="world-map-figure" />
+            <figure id="world-map-figure" className="observable" />
 
             <IndividualDisplayer />
         </section>
@@ -28,7 +28,7 @@ export default function SupportSection() {
  */
 function InformationSection() {
     return (
-        <main>
+        <main className="observable">
             <div id="support-label">Reach out to us</div>
 
             <h1>A huge shoutout to all of you!</h1>
@@ -52,7 +52,7 @@ function InformationSection() {
  */
 function IndividualDisplayer() {
     return (
-        <footer id="individual-displayer">
+        <footer id="individual-displayer" className="observable">
             <button id="previous-individual-button"
                 onClick={e => IndvidualScrollButtonClick("backwards")}
                 onDoubleClick={e => IndvidualScrollButtonDobuleClick("backwards")}

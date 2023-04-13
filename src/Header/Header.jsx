@@ -10,7 +10,7 @@ export default function Header() {
     const [isNavbarClosed, setIsNavbarClosed] = useState(true);
 
     return (
-        <header id="page-top" className={isNavbarClosed ? "nav-closed" : null}>
+        <header id="page-top" className={isNavbarClosed ? "navbar-closed" : ""}>
             <h3 className="logo">Finance Dashboard</h3>
 
             <Navbar navbarStatus={{ isNavbarClosed, setIsNavbarClosed }} />
@@ -75,7 +75,7 @@ function NavbarButton({
 }) {
     return (
         <LinkButton id={id} className="navbar-button" href={href} text={text}>
-            <figure />
+            <figure className="observable" title={text} />
         </LinkButton>
     );
 }

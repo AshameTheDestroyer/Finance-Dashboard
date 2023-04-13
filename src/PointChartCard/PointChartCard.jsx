@@ -15,9 +15,10 @@ export default function PointChartCard({
             accumlator + ` L ${i * 100 / (data.length - 2)} ${next * 10}`, "");
 
     return (
-        <div className="bottom-chart-card point-chart-card">
+        <div className="bottom-chart-card point-chart-card observable">
             <svg viewBox="0 0 100 100">
                 <path d={`M -100 100 ${path} L 200 100`} />
+
                 <path className="fill-path" d={`M -100 -100 ${path} L 200 -100`} />
                 {
                     data.slice(0, data.length - 1)

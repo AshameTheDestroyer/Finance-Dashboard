@@ -22,7 +22,7 @@ export default function ResourcesSection() {
  */
 function ElonMuskThankingSection() {
     return (
-        <section id="elon-musk-thanking-section">
+        <section id="elon-musk-thanking-section" className="observable">
             <p>
                 I've never seen such a passionate and honest work
                 before, <q>
@@ -52,7 +52,7 @@ function ElonMuskThankingSection() {
  */
 function QuestionDisplayer() {
     return (
-        <main id="question-displayer">
+        <main id="question-displayer" className="observable">
             {
                 FOLDABLE_QUESTION_DATA
                     .map((foldableQuestion, i) =>

@@ -19,7 +19,7 @@ export default function IncomeDisplayer({
         <div className="income-displayer">
             <h1>{`$${incomeAmount.toLocaleString()}`}</h1>
 
-            <section>
+            <section className="observable">
                 <div className={`profit-displayer ${profitPercentage >= 0 ? 'positive' : 'negative'}`}>
                     {profitPercentage > 0 && '+'}{`${profitPercentage}%`}
                 </div>

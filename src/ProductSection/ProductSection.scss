@@ -11,8 +11,24 @@
     place-items: start center;
     gap: 3rem;
 
+    opacity: 0;
+
+    transition: opacity 1000ms;
+
+    &.shown {
+        opacity: 1;
+
+        #product-label {
+            transform: translateX(0%);
+        }
+    }
+
     #product-label {
         @include Mixins.floating-header();
+
+        transform: translateX(-150%);
+
+        transition: transform 500ms;
     }
 
     h1 {
@@ -44,8 +60,22 @@
 
             border-radius: 1rem;
 
+            opacity: 0;
+
+            transition: opacity 1000ms;
+
+            &.shown {
+                opacity: 1;
+
+                figure {
+                    transform: scale(1);
+                }
+            }
+
             figure {
                 --icon-url: url("");
+
+                transform: scale(1.2);
 
                 width: 40%;
                 max-width: 8rem;
@@ -57,6 +87,8 @@
                 background-size: 100%;
 
                 filter: invert(1);
+
+                transition: transform 1000ms;
             }
 
             main {

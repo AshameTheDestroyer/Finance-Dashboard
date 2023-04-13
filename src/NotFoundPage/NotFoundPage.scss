@@ -12,8 +12,26 @@
 
         max-width: 80vw;
 
+        opacity: 0;
+
+        transition: opacity 2000ms;
+
+        overflow: hidden;
+
+        &.shown {
+            opacity: 1;
+
+            #not-found-label {
+                transform: translateX(0%);
+            }
+        }
+
         #not-found-label {
             @include Mixins.floating-header();
+
+            transform: translateX(-200%);
+
+            transition: transform 500ms;
         }
 
         h1 {

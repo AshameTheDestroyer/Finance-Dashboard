@@ -179,7 +179,7 @@ header {
         }
     }
 
-    header.nav-closed nav {
+    header.navbar-closed nav {
         max-width: $nav-padding;
 
         transition: max-width 500ms;
@@ -217,6 +217,10 @@ header {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
         gap: 0;
+
+        .logo {
+            place-self: center start;
+        }
 
         nav {
             width: 100%;

@@ -5,6 +5,23 @@
 
     position: relative;
 
+    &.shown::after {
+        transform: scaleX(0);
+    }
+
+    &::after {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+        transform: scaleX(1);
+        transform-origin: 100% 50%;
+
+        background-color: index.$fore-colour;
+
+        transition: transform 2000ms;
+    }
+
     svg {
         fill: transparent;
         background-image: linear-gradient($colour, transparent);

@@ -88,9 +88,10 @@ button {
 
         border-radius: 100%;
     }
+}
 
-    @media (width <=$second-screen-width) {
-
-        place-self: center start;
+@media (prefers-reduced-motion) {
+    .observable {
+        transition: none;
     }
 }

@@ -32,7 +32,7 @@ export default function StatisticSection() {
  */
 function WelcomeSection() {
     return (
-        <section id="welcome-section">
+        <section id="welcome-section" className="observable">
             <div id="news-displayer">The latest update is coming off soon!</div>
 
             <h1>With our help managing your finances will be a piece of cake</h1>
@@ -48,7 +48,7 @@ function WelcomeSection() {
                 <LinkButton text="Learn more" />
             </section>
 
-            <footer>
+            <footer className="observable">
                 <Visualizer title="Downloads" />
                 <Visualizer title="Teamups" isThousand={false} />
                 <Visualizer title="Users" />
@@ -93,11 +93,12 @@ function Card({
     id,
 }) {
     return (
-        <div id={id} className="card">
+        <div id={id} className="card observable">
             <h4>
                 <p>{title}</p>
                 <LinkButton text="i" title="Click for more information." />
             </h4>
+
             <main>{children}</main>
         </div>
     );
