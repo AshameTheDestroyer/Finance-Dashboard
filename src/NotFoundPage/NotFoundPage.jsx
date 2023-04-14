@@ -14,7 +14,7 @@ export default function NotFoundPage() {
     return (
         <main id="not-found-page">
             <section className="observable">
-                <div id="not-found-label">Something's wrong</div>
+                <div className="label">Something's wrong</div>
 
                 <h1>Wooooops! 404</h1>
 

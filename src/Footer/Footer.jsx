@@ -31,7 +31,6 @@ export default function Footer() {
                 <LinkButton text="Profit" href="#profit-visualizer" />
             </section>
 
-
             <section className="observable">
                 <h4>Products</h4>
 
@@ -47,6 +46,12 @@ export default function Footer() {
                 <LinkButton text="Individuals" href="#individual-displayer" />
             </section>
 
+            <section className="observable">
+                <h4>Adaptiveness</h4>
+
+                <LinkButton text="Share now" href="#share-now-button" />
+                <LinkButton text="Phone showcase" href="#phone-showcase-section" />
+            </section>
 
             <section className="observable">
                 <h4>Resources</h4>

@@ -3,7 +3,7 @@
 @use "../Mixins/Mixins.scss";
 
 #page>footer {
-    $gap: 2rem;
+    $gap: 1.5rem;
 
     min-height: calc(Page.$footer-height - 4rem);
     min-width: fit-content;

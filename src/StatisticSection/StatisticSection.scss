@@ -8,6 +8,8 @@
     #welcome-section {
         @include Mixins.big-section();
 
+        overflow: hidden;
+
         opacity: 0;
 
         transition: opacity 2000ms;
@@ -61,21 +63,8 @@
             color: index.$fore-darker-colour;
         }
 
-        .emphasized-button {
-            position: relative;
-
-            padding-left: calc(2ch + 12rem);
-
-            &:is(:hover, :focus-within)::after {
-                filter: index.$main-colour-filter;
-            }
-
-            a {
-                inset: auto;
-                top: 50%;
-                left: -0.5rem;
-                transform: translate(2rem, -50%);
-            }
+        .arrowed-button {
+            padding-left: 13rem;
         }
 
         footer {

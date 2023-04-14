@@ -64,6 +64,10 @@ button {
         transition: filter 500ms;
     }
 
+    &:is(:hover, :focus-within)::after {
+        filter: index.$main-colour-filter;
+    }
+
     a {
         right: 3rem;
     }

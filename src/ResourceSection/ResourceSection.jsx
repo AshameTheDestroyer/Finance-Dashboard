@@ -5,7 +5,7 @@ import LinkButton from "../LinkButton/LinkButton";
 
 import "./ResourceSection.scss";
 
-/** The fourth content section of the page, a resources section.
+/** The fifth content section of the page, a resources section.
  * @returns A resources Section element.
  */
 export default function ResourcesSection() {

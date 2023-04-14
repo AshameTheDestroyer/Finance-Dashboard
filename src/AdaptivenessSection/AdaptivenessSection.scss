@@ -1,0 +1,170 @@
+@use "../index.scss";
+@use "../Page/Page.scss";
+@use "../Mixins/Mixins.scss";
+
+#adaptiveness-section {
+    @include Mixins.main-section();
+
+    min-height: calc(100vh - 2rem);
+
+    overflow: hidden;
+
+    &>main {
+        @include Mixins.big-section();
+
+        min-height: calc(100vh - 4rem);
+
+        overflow: hidden;
+
+        opacity: 0;
+
+        transition: opacity 1000ms;
+
+        &.shown {
+            opacity: 1;
+
+            .label {
+                transform: translateX(0%);
+            }
+        }
+
+        .label {
+            @include Mixins.floating-header();
+
+            transform: translateX(-150%);
+
+            transition: transform 500ms;
+        }
+
+        h1 {
+            @include Mixins.beneath-floating-header();
+        }
+
+        p {
+            color: index.$fore-darker-colour;
+        }
+
+        section {
+
+            .arrowed-button {
+                padding-left: 12rem;
+            }
+        }
+    }
+
+    &>section {
+        $figure-offset: 30%;
+        $figure-rotation: 10deg;
+
+        position: relative;
+        transform: translate(-5%, 5%);
+
+        width: 100%;
+        height: calc(100vh - 4rem);
+
+        &.shown {
+
+            @for $i from 1 to 4 {
+
+                figure:nth-child(#{$i}) {
+                    transform:
+                        translate(calc(-55% - $figure-offset * ($i - 1)), calc(-50% + $figure-offset / 2 * ($i - 2))) rotate(calc($figure-rotation * -1 * $i)) scale(calc(1 - 0.075 * ($i - 1)));
+                }
+            }
+        }
+
+        figure {
+            --size: 65%;
+            --icon-url: url("");
+
+            position: absolute;
+            top: 50%;
+            left: calc(50% + $figure-offset);
+            transform-origin: 50% 50%;
+            transform: translate(calc(-50% - $figure-offset), -50%) rotate(0deg) scale(0.2);
+
+            width: calc(var(--size) / 1.2);
+            height: var(--size);
+
+            background-image: var(--icon-url);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+
+            transition:
+                transform 1000ms,
+                width 500ms,
+                height 500ms;
+
+            &:hover {
+                --size: 70%;
+
+                z-index: 4 !important;
+            }
+
+            @for $i from 1 to 4 {
+
+                &:nth-child(#{$i}) {
+                    --icon-url: url("../Images/PhoneShowcase/phone_showcase_#{$i}.png");
+
+                    z-index: calc(3 - $i);
+                }
+            }
+        }
+    }
+}
+
+@media (width > Page.$first-screen-width) {
+    #adaptiveness-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        place-content: center;
+        place-items: center;
+        gap: 3rem;
+
+        &>section {
+            $figure-offset: 10%;
+            $figure-rotation: 20deg;
+
+            position: relative;
+
+            transform: translate(-10%, -2.5%);
+
+            &.shown {
+
+                @for $i from 1 to 4 {
+
+                    figure:nth-child(#{$i}) {
+                        transform:
+                            translate(calc(-75% - $figure-offset * ($i - 1)), calc(-50% + $figure-offset * ($i - 2) / 2)) rotate($figure-rotation * (2 - $i)) scale(calc(1 + 0.075 * ($i - 1)));
+                    }
+                }
+            }
+
+            figure {
+                --size: 75%;
+
+                transform-origin: 50% 100%;
+            }
+        }
+    }
+}
+
+@media (width > Page.$second-screen-width) {
+    #adaptiveness-section {
+
+        &>section {
+            transform: translate(-15%, 5%);
+
+            figure {
+                --size: 75%;
+
+                width: calc(var(--size) / 1.9);
+
+                &:hover {
+                    --size: 80%;
+                }
+            }
+        }
+    }
+}

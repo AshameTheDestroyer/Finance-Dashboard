@@ -29,7 +29,7 @@ export default function SupportSection() {
 function InformationSection() {
     return (
         <main className="observable">
-            <div id="support-label">Reach out to us</div>
+            <div className="label">Reach out to us</div>
 
             <h1>A huge shoutout to all of you!</h1>
 

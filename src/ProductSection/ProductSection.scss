@@ -11,6 +11,8 @@
     place-items: start center;
     gap: 3rem;
 
+    overflow: hidden;
+
     opacity: 0;
 
     transition: opacity 1000ms;
@@ -18,12 +20,12 @@
     &.shown {
         opacity: 1;
 
-        #product-label {
+        .label {
             transform: translateX(0%);
         }
     }
 
-    #product-label {
+    .label {
         @include Mixins.floating-header();
 
         transform: translateX(-150%);

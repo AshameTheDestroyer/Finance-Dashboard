@@ -21,12 +21,12 @@
         &.shown {
             opacity: 1;
 
-            #not-found-label {
+            .label {
                 transform: translateX(0%);
             }
         }
 
-        #not-found-label {
+        .label {
             @include Mixins.floating-header();
 
             transform: translateX(-200%);
@@ -43,7 +43,7 @@
         }
 
         .arrowed-button {
-            padding-right: calc(2ch + 8rem);
+            padding-right: 10rem;
         }
     }
 }

@@ -4,6 +4,7 @@ import Header from "../Header/Header";
 import StatisticSection from "../StatisticSection/StatisticSection";
 import ProductSection from "../ProductSection/ProductSection";
 import SupportSection from "../SupportSection/SupportSection";
+import AdaptivenessSection from "../AdaptivenessSection/AdaptivenessSection";
 import ResourceSection from "../ResourceSection/ResourceSection";
 import Footer from "../Footer/Footer";
 import Animate from "../Animator/Animator";
@@ -22,6 +23,7 @@ export default function Page() {
             <StatisticSection />
             <ProductSection />
             <SupportSection />
+            <AdaptivenessSection />
             <ResourceSection />
             <Footer />
         </main>

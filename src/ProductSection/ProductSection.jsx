@@ -15,7 +15,7 @@ import gold_bars_icon from "../Icons/gold_bars.svg";
 export default function ProductSection() {
     return (
         <section id="product-section" className="observable">
-            <div id="product-label">Our best features</div>
+            <div className="label">Our best features</div>
 
             <h1>Select the plan that suits your needs the most</h1>
 

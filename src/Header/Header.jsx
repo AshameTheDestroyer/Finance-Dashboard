@@ -44,6 +44,7 @@ function Navbar({
             <NavbarButton id="statistic-section-button" href="#statistic-section" text="Statistics" />
             <NavbarButton id="product-section-button" href="#product-section" text="Products" />
             <NavbarButton id="support-section-button" href="#support-section" text="Support" />
+            <NavbarButton id="adaptiveness-section-button" href="#adaptiveness-section" text="Adaptiveness" />
             <NavbarButton id="resource-section-button" href="#resource-section" text="Resources" />
         </nav>
     );

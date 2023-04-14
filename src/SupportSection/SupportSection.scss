@@ -19,12 +19,12 @@
         &.shown {
             opacity: 1;
 
-            #support-label {
+            .label {
                 transform: translateX(0%);
             }
         }
 
-        #support-label {
+        .label {
             @include Mixins.floating-header();
 
             transform: translateX(-200%);
@@ -41,7 +41,7 @@
         }
 
         .arrowed-button {
-            padding-right: calc(2ch + 11rem);
+            padding-right: 12.5rem;
         }
     }
 
