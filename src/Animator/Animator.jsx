@@ -10,8 +10,6 @@ export default function Animate() {
     const HIDDEN_ELEMENTS =
         document.querySelectorAll(".observable");
 
-    console.log(HIDDEN_ELEMENTS);
-
     HIDDEN_ELEMENTS.forEach(hiddenElement =>
         OBSERVER.observe(hiddenElement));
 }
