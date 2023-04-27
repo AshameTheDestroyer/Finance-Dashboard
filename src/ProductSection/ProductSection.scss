@@ -149,7 +149,7 @@
     }
 }
 
-@media (width > Page.$second-screen-width) {
+@media (min-width: Page.$second-screen-width) {
     #product-section {
         padding-top: 2rem;
 
@@ -163,7 +163,7 @@
     }
 }
 
-@media (width > Page.$first-screen-width) {
+@media (min-width: Page.$first-screen-width) {
     #product-section {
         padding: 0 8rem;
         padding-bottom: 2rem;

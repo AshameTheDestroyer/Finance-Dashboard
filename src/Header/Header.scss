@@ -73,7 +73,7 @@ header {
     }
 }
 
-@media (width <=Page.$first-screen-width) or (orientation: portrait) {
+@media (max-width: Page.$first-screen-width) or (orientation: portrait) {
     $padding-left: $nav-padding * 3;
 
     body {
@@ -216,7 +216,7 @@ header {
     }
 }
 
-@media (width <=Page.$second-screen-width) {
+@media (max-width: Page.$second-screen-width) {
 
     header {
         grid-template-columns: 1fr;

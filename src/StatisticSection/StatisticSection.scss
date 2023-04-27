@@ -181,7 +181,7 @@
     aspect-ratio: 1;
 }
 
-@media (width > Page.$first-screen-width) or (orientaion: landscape) {
+@media (min-width: Page.$first-screen-width) or (orientaion: landscape) {
 
     #statistic-section {
         display: grid;
@@ -214,7 +214,7 @@
     }
 }
 
-@media (width <=Page.$second-screen-width) {
+@media (max-width: Page.$second-screen-width) {
     #statistic-section {
         place-items: stretch;
     }

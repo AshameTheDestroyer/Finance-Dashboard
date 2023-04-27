@@ -278,7 +278,7 @@
     }
 }
 
-@media (width > Page.$first-screen-width) {
+@media (min-width: Page.$first-screen-width) {
 
     #support-section {
         display: grid;

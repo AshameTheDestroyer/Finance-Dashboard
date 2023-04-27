@@ -107,7 +107,7 @@
     }
 }
 
-@media (width > Page.$first-screen-width) or (orientaion: landscape) {
+@media (min-width: Page.$first-screen-width) or (orientaion: landscape) {
 
     .pie-chart-card {
         display: grid;

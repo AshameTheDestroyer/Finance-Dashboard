@@ -114,7 +114,7 @@
     }
 }
 
-@media (width > Page.$first-screen-width) {
+@media (min-width: Page.$first-screen-width) {
     #adaptiveness-section {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -150,7 +150,7 @@
     }
 }
 
-@media (width > Page.$second-screen-width) {
+@media (min-width: Page.$second-screen-width) {
     #adaptiveness-section {
 
         &>section {
